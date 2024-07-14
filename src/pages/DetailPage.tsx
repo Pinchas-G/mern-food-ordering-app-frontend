@@ -10,6 +10,7 @@ import { MenuItem as MenuItemType } from "../types";
 import CheckoutButton from "@/components/CheckoutButton";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { useCreateCheckoutSession } from "@/api/OrderApi";
+import { Loader } from "@/components/Loader";
 
 export type CartItem = {
   _id: string;
@@ -97,7 +98,7 @@ const DetailPage = () => {
   };
 
   if (isLoading || !restaurant) {
-    return <div>Loading...</div>;
+    return <Loader title="Loading restaurant details..." />;
   }
 
   return (
@@ -114,6 +115,7 @@ const DetailPage = () => {
           <span className="text-2xl font-bold tracking-tight">Menu</span>
           {restaurant.menuItems.map((menuItem) => (
             <MenuItem
+              key={menuItem._id}
               menuItem={menuItem}
               addToCart={() => addToCart(menuItem)}
             />

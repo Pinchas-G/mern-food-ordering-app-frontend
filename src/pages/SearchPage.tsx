@@ -1,5 +1,6 @@
 import { useSearchRestaurants } from "@/api/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
+import { Loader } from "@/components/Loader";
 import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
@@ -21,7 +22,7 @@ const SearchPage = () => {
     searchQuery: "",
     page: 1,
     selectedCuisines: [],
-    sortOption: "bestMatch",
+    sortOption: "lastUpdated",
   });
 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -68,7 +69,7 @@ const SearchPage = () => {
   };
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <Loader title="Looking for restaurants..." />;
   }
 
   if (!results?.data || !city) {
@@ -102,7 +103,7 @@ const SearchPage = () => {
           />
         </div>
         {results.data.map((restaurant) => (
-          <SearchResultCard restaurant={restaurant} />
+          <SearchResultCard key={restaurant._id} restaurant={restaurant} />
         ))}
         <PaginationSelector
           page={results.pagination.page}

@@ -36,7 +36,7 @@ const UsernameMenu = () => {
         <Separator />
         <DropdownMenuItem>
           <Button
-            onClick={() => logout({ openUrl: false })}
+            onClick={() => logout()}
             className="flex flex-1 font-bold bg-orange-500"
           >
             Log Out

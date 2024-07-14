@@ -12,10 +12,15 @@ const CuisineCheckbox = ({ cuisine, field }: Props) => {
     <FormItem className="flex flex-row items-center space-x-1 space-y-0 mt-2">
       <FormControl>
         <Checkbox
+          key={cuisine}
           className="bgwhite"
           checked={field.value.includes(cuisine)}
           onCheckedChange={(checked) => {
-            // field.onChange(checked? [...field.value, cuisine] : field.value.filter(c => c!== cuisine));
+            // field.onChange(
+            //   checked
+            //     ? [...field.value, cuisine]
+            //     : field.value.filter((c: string) => c !== cuisine)
+            // );
             if (checked) {
               field.onChange([...field.value, cuisine]);
             } else {

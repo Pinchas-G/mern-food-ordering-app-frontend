@@ -60,6 +60,11 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
   const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      restaurantName: "",
+      city: "",
+      country: "",
+      deliveryPrice: 0,
+      estimatedDeliveryTime: 0,
       cuisines: [],
       menuItems: [{ name: "", price: 0 }],
     },
@@ -68,13 +73,11 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
   useEffect(() => {
     if (!restaurant) return;
 
-    const deliveryPriceFormatted = parseInt(
-      (restaurant.deliveryPrice / 100).toFixed(2)
-    );
+    const deliveryPriceFormatted = +(restaurant.deliveryPrice / 100).toFixed(2);
 
     const menuItemsFormatted = restaurant.menuItems.map((item) => ({
       ...item,
-      price: parseInt((item.price / 100).toFixed(2)),
+      price: +(item.price / 100).toFixed(2),
     }));
 
     const updatedRestaurant = {

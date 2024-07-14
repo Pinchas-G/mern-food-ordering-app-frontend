@@ -1,4 +1,5 @@
 import { useGetMyOrders } from "@/api/OrderApi";
+import { Loader } from "@/components/Loader";
 import OrderStatusDetails from "@/components/OrderStatusDetails";
 import OrderStatusHeader from "@/components/OrderStatusHeader";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -7,17 +8,17 @@ const OrderStatusPage = () => {
   const { orders, isLoading } = useGetMyOrders();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader title="Looking for orders..."/>;
   }
 
   if (!orders || orders.length === 0) {
-    return <div>No orders found</div>;
+    return <span>No orders found</span>;
   }
 
   return (
     <div className="space-y-10">
       {orders.map((order) => (
-        <div className="space-y-10 bg-gray-50 p-10 rounded-lg">
+        <div key={order._id} className="space-y-10 bg-gray-50 p-10 rounded-lg">
           <OrderStatusHeader order={order} />
           <div className="grid gap-10 md:grid-cols-2">
             <OrderStatusDetails order={order} />
