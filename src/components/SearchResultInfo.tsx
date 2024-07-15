@@ -11,6 +11,7 @@ const SearchResultInfo = ({ total, city }: Props) => {
       <span>
         {total} Restaurants found in {city}
         <Link
+          state={{ scrollToSearch: true }}
           to="/"
           className="ml-1 text-sm font-semibold underline cursor-pointer text-blue-500"
         >

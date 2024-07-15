@@ -1,19 +1,41 @@
 import landingImage from "../assets/landing.png";
 import appDownloadImage from "../assets/appDownload.png";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchBarRef = useRef<HTMLDivElement>(null);
 
   const handleSearchSubmit = (searchFormValues: SearchForm) => {
     navigate({
       pathname: `/search/${searchFormValues.searchQuery}`,
     });
   };
+
+  useEffect(() => {
+    if (location.state?.scrollToSearch) {
+      const intervalId = setInterval(() => {
+        if (searchBarRef.current) {
+          clearInterval(intervalId);
+          searchBarRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          location.state.scrollToSearch = false;
+        }
+      }, 100);
+    }
+  }, [location.state?.scrollToSearch]);
+
   return (
-    <div className="flex flex-col gap-12">
-      <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16">
+    <div className="flex flex-col gap-12  ">
+      <div
+        ref={searchBarRef}
+        className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16"
+      >
         <h1 className="text-5xl font-bold tracking-tight text-orange-600">
           Tuck into a takeway today
         </h1>
