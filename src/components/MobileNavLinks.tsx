@@ -11,19 +11,19 @@ const MobileNavLinks = () => {
         to="/order-status"
         className="flex bg-white items-center font-bold hover:text-orange-500"
       >
-        <SheetClose>Order Status</SheetClose>
+        <SheetClose className="w-full text-left">Order Status</SheetClose>
       </Link>
       <Link
         to="/manage-restaurant"
         className="flex bg-white items-center font-bold hover:text-orange-500"
       >
-        <SheetClose>Manage Restaurant</SheetClose>
+        <SheetClose className="w-full text-left">Manage Restaurant</SheetClose>
       </Link>
       <Link
         to="/user-profile"
         className="flex bg-white items-center font-bold hover:text-orange-500"
       >
-        <SheetClose> User Profile</SheetClose>
+        <SheetClose className="w-full text-left">User Profile</SheetClose>
       </Link>
       <Button
         onClick={() =>

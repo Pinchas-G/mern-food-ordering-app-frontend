@@ -1,5 +1,6 @@
 import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi";
 import { Loader } from "@/components/Loader";
+import MetaTags from "@/components/MetaTags";
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
 
 const UserProfilePage = () => {
@@ -7,7 +8,7 @@ const UserProfilePage = () => {
   const { updateUser, isLoading: isUpdateLoading } = useUpdateMyUser();
 
   if (isGetLoading) {
-    return <Loader title="Loading user profile..."/>;
+    return <Loader title="Loading user profile..." />;
   }
 
   if (!currentUser) {
@@ -15,11 +16,17 @@ const UserProfilePage = () => {
   }
 
   return (
-    <UserProfileForm
-      currentUser={currentUser}
-      onSave={updateUser}
-      isLoading={isUpdateLoading}
-    />
+    <>
+      <MetaTags
+        page="userProfilePage"
+        dynamicProps={{ userName: currentUser.name }}
+      />
+      <UserProfileForm
+        currentUser={currentUser}
+        onSave={updateUser}
+        isLoading={isUpdateLoading}
+      />
+    </>
   );
 };
 

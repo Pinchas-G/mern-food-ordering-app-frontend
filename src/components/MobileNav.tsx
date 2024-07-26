@@ -16,7 +16,7 @@ const MobileNav = () => {
 
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger aria-label="Menu">
         <Menu className="text-orange-500" />
       </SheetTrigger>
       <SheetContent className="space-y-3">

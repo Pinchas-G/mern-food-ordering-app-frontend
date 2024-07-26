@@ -1,0 +1,39 @@
+{
+  "name": "MernEats",
+  "short_name": "MernEats",
+  "description": "Discover a world of flavors with MernEats. Explore diverse cuisines from American to Italian, and find your favorite restaurants easily.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/frontend/public/favicon_32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/frontend/public/favicon_48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/frontend/public/apple_touch_180x180.png",
+      "sizes": "181x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/frontend/public/favicon_192x192.png",
+      "sizes": "192x191",
+      "type": "image/png"
+    },
+    {
+      "src": "/frontend/public/favicon_512x512.png",
+      "sizes": "516x512",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/",
+  "related_applications": []
+}

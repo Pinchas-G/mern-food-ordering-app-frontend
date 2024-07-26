@@ -22,7 +22,12 @@ type Props = {
   searchQuery?: string;
 };
 
-const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery = "" }: Props) => {
+const SearchBar = ({
+  onSubmit,
+  onReset,
+  placeHolder,
+  searchQuery = "",
+}: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,7 +36,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery = "" }: Props) 
   });
 
   const searchQueryValue = form.watch("searchQuery");
-  
+
   useEffect(() => {
     form.reset({ searchQuery });
   }, [form, searchQuery]);
@@ -67,7 +72,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery = "" }: Props) 
               <FormControl>
                 <Input
                   {...field}
-                  className="border-none shadow-none text-xl focus-visible:ring-0"
+                  className="border-none shadow-none focus-visible:ring-0 text-base sm:text-xl"
                   placeholder={placeHolder}
                 />
               </FormControl>
