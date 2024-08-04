@@ -146,13 +146,13 @@ Feel free to modify the content to better suit your project's specifics or perso
 ## Screenshots
 
 ### Home Page
-  ![home page](/frontend/src/assets/screenshots/home-page.png)
+  ![home page](src/assets/screenshots/home-page.png)
 
 ### Search Results Page  
-  ![search results page](/frontend/src/assets/screenshots/search-result-page.png)
+  ![search results page](src/assets/screenshots/search-result-page.png)
 
 ### Manage Restaurant Page
-  ![manage restaurant page](/frontend/src/assets/screenshots/manage-restaurant-page.png)
+  ![manage restaurant page](src/assets/screenshots/manage-restaurant-page.png)
 
 ### Order Status Page
-  ![order status page](/frontend/src/assets/screenshots/order-stauts-page.png)
+  ![order status page](src/assets/screenshots/order-stauts-page.png)
