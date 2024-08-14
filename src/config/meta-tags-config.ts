@@ -5,10 +5,10 @@ const metaConfig = {
     keywords: "food delivery, online ordering, American cuisine, Chinese food, Italian restaurants, vegan options, global cuisine",
     ogTitle: "Home - MernEats",
     ogDescription: "Explore delicious food options from around the world with MernEats. Your gateway to a variety of cuisines and restaurant choices.",
-    ogImage: "/frontend/src/assets/landing.png",
+    ogImage: "../assets/landing.png",
     twitterTitle: "Home - MernEats",
     twitterDescription: "Order food from a diverse range of restaurants worldwide with MernEats.",
-    twitterImage: "/frontend/src/assets/landing.png"
+    twitterImage: "../assets/landing.png"
   },
   detailPage: {
     title: "{{restaurantName}}",
@@ -16,10 +16,10 @@ const metaConfig = {
     keywords: "{{restaurantName}}, restaurant menu, dining",
     ogTitle: "{{restaurantName}} - MernEats",
     ogDescription: "Check out the detailed menu and offerings of {{restaurantName}}. Discover what makes this restaurant unique.",
-    ogImage: "/frontend/src/assets/landing.png",
+    ogImage: "../assets/landing.png",
     twitterTitle: "{{restaurantName}} - MernEats",
     twitterDescription: "Explore the menu and details of {{restaurantName}}. Find out what this restaurant has to offer.",
-    twitterImage: "/frontend/src/assets/landing.png"
+    twitterImage: "../assets/landing.png"
   },
   manageRestaurantPage: {
     title: "Manage Restaurant - {{restaurantName}}",
@@ -27,10 +27,10 @@ const metaConfig = {
     keywords: "restaurant management, active orders, restaurant settings",
     ogTitle: "Manage Restaurant {{restaurantName}} - MernEats",
     ogDescription: "Oversee your restaurant's settings and monitor current orders effectively.",
-    ogImage: "/frontend/src/assets/landing.png",
+    ogImage: "../assets/landing.png",
     twitterTitle: "Manage Restaurant {{restaurantName}} - MernEats",
     twitterDescription: "Manage your restaurant and view active orders with MernEats.",
-    twitterImage: "/frontend/src/assets/landing.png"
+    twitterImage: "../assets/landing.png"
   },
   orderStatusPage: {
     title: "Order Status",
@@ -38,10 +38,10 @@ const metaConfig = {
     keywords: "order status, track orders, view order details",
     ogTitle: "Order Status - MernEats",
     ogDescription: "Check the status of your orders and view detailed information with MernEats.",
-    ogImage: "//frontend/src/assets/landing.png",
+    ogImage: "/../assets/landing.png",
     twitterTitle: "Order Status - MernEats",
     twitterDescription: "Keep track of your orders and get updates on their status with MernEats.",
-    twitterImage: "//frontend/src/assets/landing.png"
+    twitterImage: "/../assets/landing.png"
   },
   searchResultPage: {
     title: "Search Results",
@@ -49,10 +49,10 @@ const metaConfig = {
     keywords: "{{searchQuery}}, restaurants in {{city}}, search results, dining options",
     ogTitle: "Search Results - {{searchQuery}} | MernEats",
     ogDescription: "Discover restaurants in {{city}} based on your search for \"{{searchQuery}}\". Explore various dining choices.",
-    ogImage: "/frontend/src/assets/landing.png",
+    ogImage: "../assets/landing.png",
     twitterTitle: "Search Results - {{searchQuery}} | MernEats",
     twitterDescription: "Find restaurants in {{city}} that match your search query \"{{searchQuery}}\" with MernEats.",
-    twitterImage: "/frontend/src/assets/landing.png"
+    twitterImage: "../assets/landing.png"
   },
   userProfilePage: {
     title: "User Profile - {{userName}}",
@@ -60,10 +60,10 @@ const metaConfig = {
     keywords: "user profile, {{userName}}, edit profile, account settings",
     ogTitle: "User Profile - {{userName}} | MernEats",
     ogDescription: "View and manage your profile details for {{userName}}. Edit your information and account settings.",
-    ogImage: "/frontend/src/assets/landing.png",
+    ogImage: "../assets/landing.png",
     twitterTitle: "User Profile - {{userName}} | MernEats",
     twitterDescription: "Access and update your profile information for {{userName}} with MernEats.",
-    twitterImage: "/frontend/src/assets/landing.png"
+    twitterImage: "../assets/landing.png"
   }
 };
 
