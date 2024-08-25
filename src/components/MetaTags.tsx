@@ -18,7 +18,7 @@ const MetaTags = ({ page, dynamicProps }: Props) => {
 
   return (
     <HelmetProvider>
-      <Helmet defaultTitle="MernEats.com" titleTemplate="%s | MernEats">
+      <Helmet defaultTitle="FoodFood.com" titleTemplate="%s | FoodFood">
         <title>{replacePlaceholders(meta.title, dynamicProps || {})}</title>
         {meta.description && (
           <meta

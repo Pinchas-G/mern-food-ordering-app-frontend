@@ -1,7 +1,7 @@
 {
-  "name": "MernEats",
-  "short_name": "MernEats",
-  "description": "Discover a world of flavors with MernEats. Explore diverse cuisines from American to Italian, and find your favorite restaurants easily.",
+  "name": "FoodFood",
+  "short_name": "FoodFood",
+  "description": "Discover a world of flavors with FoodFood. Explore diverse cuisines from American to Italian, and find your favorite restaurants easily.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
