@@ -1,5 +1,5 @@
 import landingImage from "../assets/landing.png";
-import appDownloadImage from "../assets/appDownload.png";
+import appDownloadImage from "../assets/app-download.png";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
