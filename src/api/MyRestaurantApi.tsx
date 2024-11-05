@@ -8,7 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useGetMyRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const getMyRestaurantRequest = async (): Promise<Restaurant> => {
+  const getMyRestaurantRequest = async (): Promise<Restaurant | null> => {
     const accessToken = await getAccessTokenSilently();
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
       method: "GET",
@@ -19,7 +19,11 @@ export const useGetMyRestaurant = () => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to get restaurant");
+      if (response.status === 404) {
+        return null;
+      } else {
+        throw new Error("Failed to get restaurant");
+      }
     }
 
     return response.json();
@@ -133,7 +137,11 @@ export const useGetMyRestaurantOrders = () => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch orders");
+      if (response.status === 404) {
+        return [];
+      } else {
+        throw new Error("Failed to fetch orders");
+      }
     }
 
     return response.json();
@@ -141,7 +149,8 @@ export const useGetMyRestaurantOrders = () => {
 
   const { data: orders, isLoading } = useQuery(
     "fetchMyRestaurantOrders",
-    getMyRestaurantOrdersRequest
+    getMyRestaurantOrdersRequest,
+    { refetchInterval: 1000 }
   );
 
   return {
