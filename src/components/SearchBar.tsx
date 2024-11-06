@@ -26,13 +26,10 @@ const SearchBar = ({
   onSubmit,
   onReset,
   placeHolder,
-  searchQuery = "",
+  searchQuery,
 }: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      searchQuery,
-    },
   });
 
   const searchQueryValue = form.watch("searchQuery");
@@ -43,7 +40,7 @@ const SearchBar = ({
 
   const handleReset = () => {
     form.reset({
-      searchQuery: "",
+      searchQuery:"",
     });
 
     if (onReset) {
