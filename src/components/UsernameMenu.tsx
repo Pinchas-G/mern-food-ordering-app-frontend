@@ -20,7 +20,7 @@ const UsernameMenu = () => {
         {user?.email}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <Link
             to="/manage-restaurant"
             className="font-bold hover:text-orange-500"
@@ -28,7 +28,7 @@ const UsernameMenu = () => {
             Manage Restaurant
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem asChild>
           <Link to="/user-profile" className="font-bold hover:text-orange-500">
             User Profile
           </Link>

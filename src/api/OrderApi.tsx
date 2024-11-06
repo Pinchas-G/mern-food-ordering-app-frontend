@@ -1,5 +1,6 @@
 import { Order } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
 
@@ -7,6 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useGetMyOrders = () => {
   const { getAccessTokenSilently } = useAuth0();
+  const [shouldRefetch, setShouldRefetch] = useState(true);
 
   const getMyOrdersRequest = async (): Promise<Order[]> => {
     const accessToken = await getAccessTokenSilently();
@@ -16,6 +18,11 @@ export const useGetMyOrders = () => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
+
+    if (response.status === 404) {
+      setShouldRefetch(false);
+      return [];
+    }
 
     if (!response.ok) {
       throw new Error("Unable to fetch orders");
@@ -27,7 +34,9 @@ export const useGetMyOrders = () => {
   const { data: orders, isLoading } = useQuery(
     "fetch my orders",
     getMyOrdersRequest,
-    { refetchInterval: 5000 }
+    {
+      refetchInterval: shouldRefetch ? 5000 : false, // refetch only if response.status != 404
+    }
   );
 
   return { orders, isLoading };

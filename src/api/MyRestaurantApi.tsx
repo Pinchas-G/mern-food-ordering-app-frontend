@@ -1,5 +1,6 @@
 import { Order, Restaurant } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
 
@@ -8,7 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useGetMyRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const getMyRestaurantRequest = async (): Promise<Restaurant | null> => {
+  const getMyRestaurantRequest = async (): Promise<Restaurant | undefined> => {
     const accessToken = await getAccessTokenSilently();
     const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
       method: "GET",
@@ -18,12 +19,12 @@ export const useGetMyRestaurant = () => {
       },
     });
 
+    if (response.status === 404) {
+      return undefined;
+    }
+
     if (!response.ok) {
-      if (response.status === 404) {
-        return null;
-      } else {
-        throw new Error("Failed to get restaurant");
-      }
+      throw new Error("Failed to get restaurant");
     }
 
     return response.json();
@@ -125,6 +126,7 @@ export const useUpdateMyRestaurant = () => {
 
 export const useGetMyRestaurantOrders = () => {
   const { getAccessTokenSilently } = useAuth0();
+  const [shouldRefetch, setShouldRefetch] = useState(true);
 
   const getMyRestaurantOrdersRequest = async (): Promise<Order[]> => {
     const accessToken = await getAccessTokenSilently();
@@ -136,21 +138,29 @@ export const useGetMyRestaurantOrders = () => {
       },
     });
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        return [];
-      } else {
-        throw new Error("Failed to fetch orders");
-      }
+    if (response.status === 404) {
+      setShouldRefetch(false);
+      return [];
     }
 
-    return response.json();
+    if (!response.ok) {
+      throw new Error("Failed to fetch orders");
+    }
+
+    const orders = await response.json();
+    if (orders.length === 0) {
+      setShouldRefetch(false);
+    }
+
+    return orders;
   };
 
   const { data: orders, isLoading } = useQuery(
     "fetchMyRestaurantOrders",
     getMyRestaurantOrdersRequest,
-    { refetchInterval: 1000 }
+    {
+      refetchInterval: shouldRefetch ? 10000 : false, //  refetch only if response.status != 404
+    }
   );
 
   return {
